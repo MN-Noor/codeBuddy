@@ -5,9 +5,10 @@ import os
 # Load environment variables
 
 def roadmap(query):
+    import  streamlit as st
     load_dotenv()
-    openai_key = os.getenv("OPENAI_KEY")
-    assistant_id = os.getenv("ASSISTANT_KEY")
+    openai_key =st.secrets["Learning_AI_KEY"]
+    assistant_id =st.secrets["Learning_ASSISTANT_KEY"]
     from openai import OpenAI
 
     # Initialize OpenAI client
@@ -68,6 +69,7 @@ def roadmap(query):
     else:
         print(run.status)
 def fetch_google_results(query):
+    import streamlit as st
     import http.client
     import urllib.parse
     import json
@@ -75,7 +77,7 @@ def fetch_google_results(query):
     conn = http.client.HTTPSConnection("api.hasdata.com")
 
     headers = {
-        'x-api-key': "",
+        'x-api-key':st.secrets["x-api-key"] ,
         'Content-Type': "application/json"
     }
 
@@ -89,18 +91,12 @@ def fetch_google_results(query):
 
     res = conn.getresponse()
     data = res.read()
-
-    # Parse the JSON response
     response_data = json.loads(data.decode("utf-8"))
 
-    # Initialize a string to store the concatenated results
     result_string = ""
 
-    # Check if the 'organicResults' key exists in the response
     if 'organicResults' in response_data:
-        # Iterate over the organicResults array
         for result in response_data['organicResults']:
-            # Concatenate the desired attributes into the result string
             result_string += f"Title: {result.get('title', '')}\nLink: {result.get('link', '')}\nSource: {result.get('source', '')}\n\n"
 
     return result_string

@@ -27,22 +27,3 @@ def asking_questions():
         st.success("Answers submitted successfully!")
         # You can further process the answers or save them here
     return answers
-
-def main():
-    answers = asking_questions()
-
-    
-    if st.button("Generate Roadmap"):
-        generate_roadmap(answers)
-
-def generate_roadmap(answers):
-    
-    st.write("Your tailored roadmap will be generated here.")
-    st.write(f"You have chosen to learn {answers['language']}.")
-    st.write(f"Your current experience level is {answers['experience_level']}.")
-    st.write(f"Your primary goal in learning this language is {answers['learning_goal']}.")
-    st.write(f"You are willing to dedicate {answers['time_commitment']} per week to learning this language.")
-    st.write(f"You prefer {answers['learning_methods']}.")
-
-if __name__ == "__main__":
-    main()
