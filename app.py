@@ -61,7 +61,7 @@ def main():
     
     # Create  query strings
     assignment_query = f"Language: {answers['language']}, Learning Goal: {answers['learning_goal']}, Experience Level: {answers['experience_level']}"
-    roadmap_query =f"Language: {answers['language']},Learning Goal: {answers['learning_goal']}, Experience Level:{answers['experience_level']},prior_Experience:{answers["prior_experience"]},Learning_method:{answers["learning_methods"]},time_committment:{answers["time_commitment"]}"
+    roadmap_query = f"Language: {answers['language']}, Learning Goal: {answers['learning_goal']}, Experience Level: {answers['experience_level']}, prior Experience: {answers['prior_experience']}, Learning_method: {answers['learning_methods']}, time_committment: {answers['time_commitment']}"
     Topic_query=f"Topic:{answers["topic_today"]}Language: {answers['language']}, Experience Level:{answers['experience_level']},prior_Experience:{answers["prior_experience"]},Learning_method:{answers["learning_methods"]}"
     
     st.sidebar.title("Navigation")
