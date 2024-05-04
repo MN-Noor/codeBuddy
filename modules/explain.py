@@ -3,8 +3,8 @@
 def topic_explanation(Query):
     from openai import OpenAI
     import streamlit  as st
-    openai_key = st.secrets["explain_ai_key"]
-    assistant_id = st.secrets["explain_assistant_id"]
+    openai_key = st.secrets["explain"]["ai_key"]
+    assistant_id = st.secrets["explain"]["assistant_id"]
 
     client = OpenAI(api_key=openai_key)
 
@@ -62,7 +62,8 @@ def search_and_get_youtube_links(topic):
     import streamlit as st
     import requests
     max_results = 4
-    api_key =st.secrets["api_key"]
+    api_key =st.secrets['youtube']["api_key"]
+   
     url = f'https://www.googleapis.com/youtube/v3/search?key={api_key}&part=snippet&type=video&q={topic}'
     response = requests.get(url)
     data = response.json()
@@ -76,13 +77,7 @@ def search_and_get_youtube_links(topic):
             video_info += f"Title:{video_title}\nLink:({video_link})\n\n"  
     return video_info
 
-topic_explanation("for  loop youtube videos")
 
-# print(search_and_get_youtube_links("for  loop"))
-
-
-
-  
 
 
 

@@ -26,8 +26,8 @@ def get_response(client, thread_id, assistant_id, content):
 
 def create_assignment(query):
     import streamlit as st
-    openai_key =st.secrets["assignai_key"] 
-    assistant_id = st.secrets["assistant_id"]
+    openai_key =st.secrets["assignment"]["ai_key"] 
+    assistant_id = st.secrets["assignment"]["assistant_id"]
     client = OpenAI(api_key=openai_key)
     thread_id = create_thread(client)
     messages = get_response(client, thread_id, assistant_id, query)

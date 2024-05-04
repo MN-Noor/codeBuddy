@@ -4,8 +4,8 @@ import streamlit as st
 from modules.question import asking_questions
 from modules import LearningPath
 from modules import assignment
-from  modules import explain
-from  modules import code_checker
+from modules.explain import topic_explanation
+from modules import code_checker
 def show(response):
     import streamlit as st
     st.markdown("<h1 style='color: white;'>RoadMap To Learn</h1>", unsafe_allow_html=True)
@@ -74,11 +74,15 @@ def main():
     elif page == "RoadMap":
         if content_dict["RoadMap"] is None:
             content_dict["RoadMap"] = LearningPath.roadmap(roadmap_query)
+            show(content_dict["RoadMap"])
+        else:
+            show(content_dict["RoadMap"])
 
-        show(content_dict["RoadMap"])
+
+        
     elif page == "Topic":
         if content_dict["Explain"] is None:
-            content_dict["Explain"] = explain.topic_explanation(Topic_query) 
+            content_dict["Explain"] = topic_explanation(Topic_query) 
         
         show(content_dict["Explain"])
 

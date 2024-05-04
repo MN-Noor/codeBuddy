@@ -28,8 +28,8 @@ def get_response(client, thread_id, assistant_id, content):
 def check_code(problem_statement, code):
     import streamlit as st
     combined_query = f"{problem_statement}\n\n{code}"
-    openai_api=st.secrets["code_ai_key"]
-    assistant_id=st.secrets["code_assistant_id"]
+    openai_api=st.secrets["code_checker"]["ai_key"]
+    assistant_id=st.secrets["code_checker"]["assistant_id"]
     client = OpenAI(api_key=openai_api)
     thread_id = create_thread(client)
     messages = get_response(client, thread_id, assistant_id,combined_query)

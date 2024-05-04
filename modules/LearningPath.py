@@ -7,8 +7,8 @@ import os
 def roadmap(query):
     import  streamlit as st
     load_dotenv()
-    openai_key =st.secrets["Learning_AI_KEY"]
-    assistant_id =st.secrets["Learning_ASSISTANT_KEY"]
+    openai_key =st.secrets["LearningPath"]["ai_key"]
+    assistant_id =st.secrets["LearningPath"]["assistant_id"]
     from openai import OpenAI
 
     # Initialize OpenAI client
@@ -77,7 +77,7 @@ def fetch_google_results(query):
     conn = http.client.HTTPSConnection("api.hasdata.com")
 
     headers = {
-        'x-api-key':st.secrets["x-api-key"] ,
+        'x-api-key':st.secrets["Search"]["api-key"] ,
         'Content-Type': "application/json"
     }
 
