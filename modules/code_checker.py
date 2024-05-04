@@ -40,13 +40,13 @@ import streamlit as st
 
 
 def show():
-    st.markdown("<h1 style='color: white;'>Assignment</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='color: white;'>Code Checker ✔️</h1>", unsafe_allow_html=True)
     
     # Add background image
     st.markdown("""
         <style>
         [data-testid="stAppViewContainer"]{
-        background-image: url("https://wallpaperboat.com/wp-content/uploads/2019/10/coding-16.jpg");
+        background-image: url("https://wallpapercave.com/wp/wp6763962.png");
         background-size: cover;
         }
         </style>
@@ -72,7 +72,7 @@ def show():
     code = st.text_area("Enter Code:")
 
     # Run code explanation
-    if st.button("Get Explanation"):
+    if st.button("Run and Debug"):
         explanation= check_code(problem_statement, code)
 
         # Display response

@@ -6,9 +6,9 @@ from modules import LearningPath
 from modules import assignment
 from modules.explain import topic_explanation
 from modules import code_checker
-def show(response):
+def show(title,response):
     import streamlit as st
-    st.markdown("<h1 style='color: white;'>RoadMap To Learn</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='color: white;'>{title}</h1>", unsafe_allow_html=True)
     # Add background image
     #https://wallpapercave.com/wp/wp6763962.png
     page_element="""
@@ -33,19 +33,30 @@ def show(response):
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
         margin: 5px auto;
         width: 120%; /* Adjust width as needed */
-        height: 1500px; /* Adjust height as needed */
+        height: 2000px; /* Adjust height as needed */
     }
     </style>
     """,
         unsafe_allow_html=True,
     )
-
+    import markdown
+    html_markdown = markdown.markdown(response)
     # Add text box
-    html_content = f'<div class="text-box"><h4 style="color:black;">{response}</h4></div>'
+    html_content = f'<div class="text-box"><h4 style="color:black;">{html_markdown}</h4></div>'
 
     # Adding the HTML content to Streamlit using st.markdown
     st.markdown(html_content, unsafe_allow_html=True)
 
+
+import streamlit as st
+
+page_options = {
+    "Home 🏠": "Home",
+    "RoadMap Generator 🗺️": "RoadMap",
+    "Topic Explainer 📚": "Topic",
+    "Assignment Generator 📝": "Assignment",
+    "Code Checker ✔️": "Code Checker"
+}
 
 def main():
    
@@ -53,47 +64,45 @@ def main():
         "RoadMap": None,
         "Explain": None,
         "assignment": None,
-        
     }
 
-    # Get user answers
+   
     answers = asking_questions() 
     
-    # Create  query strings
-    Topic_query = f'Topic:{answers["topic_today"]} Language: {answers["language"]}, Experience Level: {answers["experience_level"]}, prior_Experience: {answers["prior_experience"]}, Learning_method: {answers["learning_methods"]}'
-    assignment_query = f'Language: {answers["language"]}, Learning Goal: {answers["learning_goal"]}, Experience Level: {answers["experience_level"]}'
+    Topic_query = f'Topic:{answers["topic_today"]} Language: {answers["language"]}, Experience Level: {answers["experience_level"]}, Learning_method: {answers["learning_methods"]}'
+    assignment_query = f'Language: {answers["language"]},Concept: {answers["topic_today"]}, Learning Goal: {answers["learning_goal"]}, Experience Level: {answers["experience_level"]}'
     roadmap_query = f'Language: {answers["language"]},Experience Level: {answers["experience_level"]}, prior Experience: {answers["prior_experience"]}, Learning_method: {answers["learning_methods"]}, time_committment: {answers["time_commitment"]}'
 
-    st.sidebar.title("Navigation")
-    page = st.sidebar.selectbox("Go to", ["Home", "RoadMap", "Topic","Assignment","Code Checker"])
+    st.sidebar.title("codeBuddy Options")
 
+   
+    page = st.sidebar.selectbox("Go to", list(page_options.keys()))
 
-    if page == "Home":
+    if page == "Home 🏠":
         st.title("Welcome to Coding Buddy")
 
-    elif page == "RoadMap":
+    elif page == "RoadMap Generator 🗺️":
         if content_dict["RoadMap"] is None:
-            content_dict["RoadMap"] = LearningPath.roadmap(roadmap_query)
-            show(content_dict["RoadMap"])
+            response= LearningPath.roadmap(roadmap_query)
+            show("RoadMap Generator 🗺️",response)
+            content_dict["RoadMap"]=response
+            
         else:
-            show(content_dict["RoadMap"])
+            show("RoadMap Generator 🗺️",content_dict["RoadMap"])
 
-
-        
-    elif page == "Topic":
+    elif page == "Topic Explainer 📚":
         if content_dict["Explain"] is None:
             content_dict["Explain"] = topic_explanation(Topic_query) 
-        
-        show(content_dict["Explain"])
+        show("Topic Explainer 📚",content_dict["Explain"])
 
-    elif page == "Assignment":
+    elif page == "Assignment Generator 📝":
         if content_dict["assignment"] is None:
             content_dict["assignment"] = assignment.create_assignment(assignment_query)
+        show("Assignment Generator 📝",content_dict["assignment"])
 
-        show(content_dict["assignment"])
-    elif page == "Code Checker":
+    elif page == "Code Checker ✔️":
         code_checker.show()
-
 
 if __name__ == "__main__":
     main()
+
