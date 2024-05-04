@@ -3,9 +3,8 @@
 def topic_explanation(Query):
     from openai import OpenAI
     import streamlit  as st
-    openai_key = st.secrets["explain"]["ai_key"]
-    assistant_id = st.secrets["explain"]["assistant_id"]
-
+    openai_key =st.secrets["assignment"]["ai_key"] 
+    assistant_id =st.secrets["explain"]["assistant_id"]
     client = OpenAI(api_key=openai_key)
 
     thread = client.beta.threads.create()
@@ -34,7 +33,7 @@ def topic_explanation(Query):
             if tool.function.name =="search_and_get_youtube_links":
                 tool_outputs.append({
                     "tool_call_id": tool.id,
-                    "output": "search youtube videos  and gives"
+                    "output": "youtube titles and links"
                 })
     
    
@@ -58,25 +57,25 @@ def topic_explanation(Query):
     else:
         print(run.status)
 
+
 def search_and_get_youtube_links(topic):
     import streamlit as st
     import requests
-    max_results = 4
-    api_key =st.secrets['youtube']["api_key"]
+    api_key = st.secrets['youtube']["api_key"]
    
     url = f'https://www.googleapis.com/youtube/v3/search?key={api_key}&part=snippet&type=video&q={topic}'
     response = requests.get(url)
     data = response.json()
-    video_info = ""  
+    video_links = []
+    for item in data["items"]:  # Access the "items" part of the response JSON
+        video_title = item["snippet"]["title"]
+        video_url = f"https://www.youtube.com/watch?v={item['id']['videoId']}"
+        video_links.append({"title": video_title, "url": video_url})
 
-    if 'items' in data:
-        for item in data['items'][:max_results]:
-            video_id = item['id']['videoId']
-            video_title = item['snippet']['title']
-            video_link = f"https://www.youtube.com/watch?v={video_id}"
-            video_info += f"Title:{video_title}\nLink:({video_link})\n\n"  
-    return video_info
+    return video_links
 
+# # print(search_and_get_youtube_links("python while loop"))
+# print(topic_explanation("Python while loop video"))
 
 
 
