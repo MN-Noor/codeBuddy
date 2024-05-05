@@ -36,16 +36,18 @@ def roadmap(query):
     else:
         print(run.status)
         
-    # Define the list to store tool outputs
     tool_outputs = []
-    
-    # Loop through each tool in the required action section
-    for tool in run.required_action.submit_tool_outputs.tool_calls:
-        if tool.function.name == "fetch_google_results":
-            tool_outputs.append({
-            "tool_call_id": tool.id,
-            "output": "proper roadmap"
-            })
+  # Loop through each tool in the required action section
+    try:
+        for tool in run.required_action.submit_tool_outputs.tool_calls:
+            if tool.function.name == "fetch_google_results":
+                tool_outputs.append({
+                    "tool_call_id": tool.id,
+                    "output": "proper roadmap"
+                })
+    except AttributeError:
+        print("Error: Unable to access tool calls.")
+
         
     if tool_outputs:
         try:

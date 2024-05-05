@@ -25,5 +25,4 @@ def asking_questions():
 
     if st.button("Submit"):
         st.success("Answers submitted successfully!")
-        # You can further process the answers or save them here
     return answers
