@@ -41,3 +41,16 @@ Stuck with a pesky error that won't budge? CodeBuddy has your back! CodeBuddy’
 - Highlights missing edge cases
 ![Screenshot Placeholder 4](media/code_checker1.jpg)
 ![Screenshot Placeholder 5](media/code_checker2.jpg)
+
+### TruLens Eval Results
+I had used
+- Prompt as context
+- User preference as query
+- response of Assistant as response
+![Screenshot Placeholder 4](media/TruLens1.jpeg)
+![Screenshot Placeholder 5](media/truLens2.jpeg)
+![Screenshot Placeholder 4](media/truLens3.jpeg)
+
+
+
+
