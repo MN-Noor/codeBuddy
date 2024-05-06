@@ -33,7 +33,7 @@ def show(title,response):
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
         margin: 5px auto;
         width: 120%; /* Adjust width as needed */
-        height: 4000px; /* Adjust height as needed */
+        height: 5000px; /* Adjust height as needed */
     }
     </style>
     """,
