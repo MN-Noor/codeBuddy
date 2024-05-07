@@ -3,7 +3,10 @@
 ## The Problem
 
 Learning a new programming language can be a daunting task. You're bombarded with countless resources, making it difficult to find the right path for your specific needs and interests. Courses can be expensive and time-consuming, and even after enrolling, you might not be sure if they align with your current level. Once you grasp a concept, you struggle to find problems that connect it to real-world applications, hindering practical understanding. Finally, troubleshooting errors can be frustrating, leaving you wondering where you went wrong despite following steps meticulously.
-
+**Roadmap Assistant=OpenAI Assistant🤖+Google Search🌐🔍+Coursera Api**
+**Concept Explainer=OpenAI Assistant🤖+Youtube Search Api📺**
+**Practice Problem=OpenAI Assistant🤖+Programming Books📚**
+**Code Checker=OpenAI Assistant🤖+Code Interpreter👩‍💻**
 ## Introducing CodeBuddy
 
 CodeBuddy is your one-stop shop for a personalized and efficient programming learning experience. It tailors its guidance to your unique goals and interests, ensuring you get the most out of your journey.
