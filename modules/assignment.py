@@ -1,6 +1,8 @@
 from openai import OpenAI
 import time
 
+
+
 def create_thread(client):
     thread = client.beta.threads.create()
     return thread.id

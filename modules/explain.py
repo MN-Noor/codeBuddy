@@ -1,5 +1,33 @@
-
-
+from openai import OpenAI
+#creating assistant
+# def create_assistant():
+#     from openai import OpenAI
+#     client = OpenAI()
+#     assistant = client.beta.assistants.create(
+#     instructions="you are an experienced professor you have to explain the topic that the user asks you about and you have to break down the complex topic and explain it in detail depending upon user experience and also recommend user videos by correct video links to the user .you cannot recommend books if user prefer reading generate him good explanation and if user prefer tutorials recommend youtube videos in end.if user prefer visual learning",
+#     model="gpt-3.5-turbo-0613",
+#     tools=[
+#         {
+#         "type": "function",
+#         "function": {
+#         "name": "search_and_get_youtube_links",
+#         "description": "Search YouTube for videos related to a given topic and retrieve their titles and URLs.",
+#         "strict": false,
+#         "parameters": {
+#             "type": "object",
+#             "properties": {
+#             "topic": {
+#                 "type": "string",
+#                 "description": "The topic or keyword for which you want to search YouTube videos."
+#             }
+#             },
+#             "required": [
+#             "topic"
+#             ]
+#         }
+#         }
+#         }])
+        
 def topic_explanation(Query):
     from openai import OpenAI
     import streamlit  as st

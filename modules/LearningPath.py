@@ -2,6 +2,35 @@
 from dotenv import load_dotenv
 import os
 
+# from openai import OpenAI
+#creating assistant
+# def create_assistant():
+#     from openai import OpenAI
+#     client = OpenAI()
+#     assistant = client.beta.assistants.create(
+#     instructions="you are an experienced professor you have to explain the topic that the user asks you about and you have to break down the complex topic and explain it in detail depending upon user experience and also recommend user videos by correct video links to the user .you cannot recommend books if user prefer reading generate him good explanation and if user prefer tutorials recommend youtube videos in end.if user prefer visual learning",
+#     model="gpt-3.5-turbo-0613",
+#     tools=[ {
+#         "type": "function",
+#         "function": {
+#             "name": "fetch_google_results",
+#             "description": "Retrieve Google search results for a given query.and get links and course names",
+#             "strict": false,
+#             "parameters": {
+#                 "type": "object",
+#                 "properties": {
+#                 "query": {
+#                     "type": "string",
+#                     "description": "The search query for which to retrieve results."
+#                 }
+#                 },
+#                 "required": [
+#                 "query"
+#                  ]
+#                 }
+#                 }
+#                 }])
+               
 # Load environment variables
 
 def roadmap(query):
